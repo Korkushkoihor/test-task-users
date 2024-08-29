@@ -1,0 +1,12 @@
+<div class="tooltip-row">
+  @if (warningTooltip()) {
+    <div class="tooltip warning-tooltip">
+      {{warningTooltip()}}
+    </div>
+  }
+  @if (successTooltip()) {
+    <div class="tooltip success-tooltip">
+      {{successTooltip()}}
+    </div>
+  }
+</div>

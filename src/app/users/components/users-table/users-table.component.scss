@@ -1,0 +1,47 @@
+@import '../../../../styles/settings/variables';
+
+:host {
+  table {
+    box-shadow: $soft-box-shadow;
+    border-radius: $border-radius;
+    border-collapse: collapse;
+    overflow: hidden;
+    width: 100%;
+
+    thead {
+      tr {
+        background-color: $white;
+        text-transform: uppercase;
+        color: $secondary-font;
+        font-weight: 600;
+      }
+    }
+
+    tbody {
+      tr {
+        background-color: $table;
+
+        &:hover {
+          background-color: $table-hover;
+          cursor: pointer;
+        }
+
+        td {
+          border-bottom: 2px solid $white;
+          color: $primary-font;
+        }
+
+        &:last-child td {
+          border-bottom: 0;
+        }
+      }
+    }
+
+    tr {
+      th, td {
+        padding: 16px;
+        text-align: left;
+      }
+    }
+  }
+}

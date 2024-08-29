@@ -1,0 +1,28 @@
+@import '../../../../styles/settings/variables';
+
+:host {
+  .tooltip-row {
+    display: flex;
+    padding: 40px 40px 8px;
+    height: 60px;
+
+    .tooltip {
+      min-width: 240px;
+      padding: 16px;
+      border-radius: $border-radius;
+      display: flex;
+      align-items: center;
+      color: $white;
+
+      &.warning-tooltip {
+        margin-right: auto;
+        background-color: $warning;
+      }
+
+      &.success-tooltip {
+        margin-left: auto;
+        background-color: $green;
+      }
+    }
+  }
+}

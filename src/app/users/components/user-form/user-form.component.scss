@@ -1,0 +1,31 @@
+@import '../../../../styles/settings/variables';
+
+:host {
+  .user-form {
+    padding: 24px;
+    background-color: $white;
+    border-radius: $border-radius;
+    box-shadow: $soft-box-shadow;
+
+    .top-info {
+      display: flex;
+      justify-content: space-between;
+
+      .user-name {
+        font-weight: 600;
+        font-size: 18px;
+        margin: 0 0 16px;
+      }
+    }
+
+    .buttons-row  {
+      margin-top: 32px;
+      display: flex;
+      justify-content: space-between;
+
+      &.justify-center {
+        justify-content: center;
+      }
+    }
+  }
+}

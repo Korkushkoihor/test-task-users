@@ -1,0 +1,129 @@
+<form class="user-form" (submit)="submitForm()" [formGroup]="form">
+  <div class="top-info">
+    <p class="user-name">
+      @if (this.userInfo()) {
+        {{this.userInfo()?.user?.firstName}} {{this.userInfo()?.user?.lastName}}
+      } @else {
+        Create new user
+      }
+    </p>
+
+    <button class="btn-icon" (click)="dismissForm.emit(true)">
+      <img height="24" width="24" src="./assets/dismiss.png" alt="X">
+    </button>
+  </div>
+
+
+  <div class="one-input">
+    <label>Username*</label>
+    <input formControlName="userName" type="text">
+    @if (form.get('userName')?.touched && form.get('userName')?.errors?.['required']) {
+      <p class="error-message">
+        Username is required
+      </p>
+    }
+  </div>
+
+  <div class="one-input">
+    <label>First name*</label>
+    <input formControlName="firstName" type="text">
+    @if (form.get('firstName')?.touched && form.get('firstName')?.errors?.['required']) {
+      <p class="error-message">
+        First name is required
+      </p>
+    }
+  </div>
+
+  <div class="one-input">
+    <label>Last name*</label>
+    <input formControlName="lastName" type="text">
+    @if (form.get('lastName')?.touched && form.get('lastName')?.errors?.['required']) {
+      <p class="error-message">
+        Last name is required
+      </p>
+    }
+  </div>
+
+  <div class="one-input">
+    <label>Email*</label>
+    <input appEmail formControlName="email" type="text">
+      @if (form.get('email')?.touched && form.get('email')?.invalid) {
+        <p class="error-message">
+          @if (form.get('email')?.errors?.['required']) {
+            Email is required
+          }
+          @if (form.get('email')?.errors?.['email']) {
+            Please enter valid email
+          }
+        </p>
+      }
+  </div>
+
+  <div class="one-input">
+    <label>Type*</label>
+    <div class="select-wrapper">
+      <select formControlName="userType">
+        <option value="Administrator">Administrator</option>
+        <option value="Driver">Driver</option>
+      </select>
+    </div>
+    @if (form.get('userType')?.touched && form.get('userType')?.errors?.['required']) {
+      <p class="error-message">
+        Type is required
+      </p>
+    }
+  </div>
+
+  <div class="one-input">
+    <label>Password*</label>
+    <input formControlName="password" type="password">
+      @if (form.get('password')?.touched && form.get('password')?.invalid) {
+        <p class="error-message">
+          @if (form.get('password')?.errors?.['required']) {
+            Password is required
+          }
+          @if (form.get('password')?.errors?.['minlength']) {
+            Password should have at least 8 symbols
+          }
+          @if (form.get('password')?.errors?.['pattern']) {
+            Passwod should contain at least 1 letter and 1 number
+          }
+        </p>
+      }
+  </div>
+
+  <div class="one-input">
+    <label>Repeat password*</label>
+    <input formControlName="confirmPassword" type="password">
+      @if (form.get('confirmPassword')?.touched && (form.get('confirmPassword')?.invalid || form.errors?.['samePasswordError'])) {
+        <p class="error-message">
+          @if (form.get('confirmPassword')?.errors?.['required']) {
+            Repeat password is required
+          }
+          @if (form.get('confirmPassword')?.errors?.['minlength']) {
+            Password should have at least 8 symbols
+          }
+          @if (form.get('confirmPassword')?.errors?.['pattern']) {
+            Passwod should contain at least 1 letter and 1 number
+          }
+          @if (form.get('confirmPassword')?.errors?.['fieldMismatch'] || form.errors?.['samePasswordError']) {
+            Passwords do not match
+          }
+        </p>
+      }
+  </div>
+
+  <div class="buttons-row" [class.justify-center]="!this.userInfo()">
+    @if (this.userInfo()) {
+      <button (click)="handleDeleteClick()" type="button" class="btn btn-warning">
+        Delete
+      </button>
+    }
+
+    <button type="confirm" class="btn btn-primary">
+      {{this.userInfo() ? 'Save' : 'Create'}}
+    </button>
+
+  </div>
+
+</form>

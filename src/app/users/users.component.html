@@ -1,0 +1,16 @@
+<div class="content-holder">
+  <div class="buttons-row">
+    <button (click)="clickedCreateUser()" class="btn btn-primary">
+      Create User
+    </button>
+  </div>
+</div>
+<div class="content-holder">
+  <div class="table-holder">
+    <app-users-table [users]="users()" (clickedOnUser)="handleClickOnUser($event)"></app-users-table>
+  </div>
+
+  @if (showUserForm) {
+    <app-user-form [userInfo]="selectedUserInfoToEdit()" (updateUsers)="handleUpdateUsers()" (dismissForm)="handleDismissForm()"></app-user-form>
+  }
+</div>

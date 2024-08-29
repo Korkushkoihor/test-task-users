@@ -1,0 +1,40 @@
+@import "variables";
+
+.btn {
+  padding: 16px;
+  min-width: 120px;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  color: $white;
+  font-size: 16px;
+
+  &:hover {
+    box-shadow: $soft-box-shadow;
+  }
+
+  &.btn-primary {
+    background-color: $primary;
+  }
+
+  &.btn-warning {
+    background-color: $warning;
+  }
+}
+
+.btn-icon {
+  padding: 4px;
+  background: transparent;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  width: 32px;
+
+  &:hover {
+    box-shadow: $input-shadow;
+  }
+}
